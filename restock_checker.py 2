@@ -20,8 +20,13 @@ MAX_DISTANCE_MILES = 25
 
 # --- LOCATION SETUP ---
 geolocater = Nominatim(user_agent="pokemon_restocks")
-user_location = geolocator.geocode(USER_POSTCODE)
-USER_COORD = (user_location.latitude, user_location.longitude)
+user_location = 
+ geolocator.geocode(USER_POSTCODE)
+if not user_location:
+  raise RuntimeError("Failed to geocode postcode")
+USER_COORD = 
+ (user_location.latitude,
+  user_location.longitude)
 
 # --- STORES & TIERS ---
 TIERS = {
