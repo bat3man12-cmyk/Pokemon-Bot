@@ -97,10 +97,14 @@ def is_sealed(name):
 
       # --- MAIN LOOP ---
       while True:
+         try:
         for tier in TIERS:
           for store, (url, coord) in TIERS[tier].items():
             parse_store(store, url, tier, coord)
             time.sleep(CHECK_INTERVAL)
+except Exception as e:
+print("Main loop error:", e)
+time.sleep(60)
       
   
                 
