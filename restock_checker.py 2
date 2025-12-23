@@ -1,7 +1,7 @@
 # --- AUTO-INSALL DEPENDENCIES ---
 import subprocess 
 import sys 
-for pacage in {"requests","beautifulsoup4","geopy"]:
+for requirements.txt in {"requests","beautifulsoup4","geopy"]:
   subporcess.check_call([sys.executable,"-m", "pip", "install", package]) 
 
 # --- IMPORTS ---
@@ -60,6 +60,9 @@ def is_sealed(name):
     return any(k in name for k in TOP_PRIORITY_KEYWORDS)
 
   def send_discord(message):
+    if not DISCORD_WEBHOOK:
+       print("DISCORD_WEBHOOK not set")
+      return
     requests.post(DISCORD_WEBHOOKS, json={"content": message})
 
   def within_distance(store_coord):
